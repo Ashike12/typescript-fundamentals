@@ -4,7 +4,7 @@
   "description": "",
   "main": "main.ts",
   "scripts": {
-    "Start": "",
+    "start": "tsc main.ts & node main.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -14,6 +14,7 @@
     "request": "^2.88.0"
   },
   "devDependencies": {
-    "@types/lodash": "^4.14.119"
+    "@types/lodash": "^4.14.119",
+    "@types/request": "^2.48.1"
   }
 }

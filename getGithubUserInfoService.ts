@@ -1,7 +1,22 @@
-import * as _ from "lodash";
+export {getGithubUserInfos};
+import * as request from "request"
+import { Agent } from "http";
 
-var arry = ["1", "2"];
+class getGithubUserInfos {
+    UserInfo (UserName:string){
+        let requestURL:any = 'https://api.github.com/users/'+UserName;
+        let options:any = {
+            headers: {
+                'User-Agent': 'request'
+            }
+        }
+        console.log(requestURL);
+        request.get(requestURL, options, (response:any)=>{
+            console.log(response);
+        }); 
+    }
 
-_.forEach(arry, function(val){
-    console.log(val);
-})
+    UserRepos (UserName:string){
+
+    }
+}
