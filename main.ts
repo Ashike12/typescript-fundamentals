@@ -1,7 +1,7 @@
-import {getGithubUserInfos} from './getGithubUserInfoService'
+import {GetGithubUserInfos} from './getGithubUserInfoService'
 
 import * as _ from "lodash";
 
-let GithubUserInfo:getGithubUserInfos = new getGithubUserInfos();
+let GithubUserInfo:GetGithubUserInfos = new GetGithubUserInfos();
 
-GithubUserInfo.UserInfo('adibmehedi');
+GithubUserInfo.UserRepos('mdzzaman');
