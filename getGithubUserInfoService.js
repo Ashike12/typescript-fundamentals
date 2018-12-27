@@ -2,29 +2,37 @@
 exports.__esModule = true;
 var request = require("request");
 var User_1 = require("./User");
+var Repo_1 = require("./Repo");
+var _ = require("lodash");
 var options = {
     headers: {
         'User-Agent': 'request'
     },
     json: true
 };
-var getGithubUserInfos = /** @class */ (function () {
-    function getGithubUserInfos() {
+var GetGithubUserInfos = /** @class */ (function () {
+    function GetGithubUserInfos() {
     }
-    getGithubUserInfos.prototype.UserInfo = function (UserName) {
+    GetGithubUserInfos.prototype.UserInfo = function (UserName) {
         var requestURL = 'https://api.github.com/users/' + UserName;
         console.log(requestURL);
         request.get(requestURL, options, function (error, response, body) {
-            var RequestUserInfo = new User_1.User(body);
-            console.log(RequestUserInfo);
+            var requestUserInfo = new User_1.User(body);
+            console.log(requestUserInfo);
         });
     };
-    getGithubUserInfos.prototype.UserRepos = function (UserName) {
+    GetGithubUserInfos.prototype.UserRepos = function (UserName) {
         var requestURL = 'https://api.github.com/users/' + UserName + '/repos';
         request.get(requestURL, options, function (error, response, body) {
-            console.log(body);
+            var RequestUserRepos = new Array();
+            _.forEach(body, function (repo) {
+                var userRepo = new Repo_1.Repo(repo);
+                RequestUserRepos.push(userRepo);
+                console.log(userRepo);
+                console.log("\n\n---------------------------------------\n\n");
+            });
         });
     };
-    return getGithubUserInfos;
+    return GetGithubUserInfos;
 }());
-exports.getGithubUserInfos = getGithubUserInfos;
+exports.GetGithubUserInfos = GetGithubUserInfos;

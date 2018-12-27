@@ -4,4 +4,5 @@ import * as _ from "lodash";
 
 let GithubUserInfo:GetGithubUserInfos = new GetGithubUserInfos();
 
-GithubUserInfo.UserRepos('mdzzaman');
+GithubUserInfo.UserRepos('adibmehedi');
+//GithubUserInfo.UserInfo('Ashike12');

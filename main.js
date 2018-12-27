@@ -1,5 +1,6 @@
 "use strict";
 exports.__esModule = true;
 var getGithubUserInfoService_1 = require("./getGithubUserInfoService");
-var GithubUserInfo = new getGithubUserInfoService_1.getGithubUserInfos();
-GithubUserInfo.UserRepos('mdzzaman');
+var GithubUserInfo = new getGithubUserInfoService_1.GetGithubUserInfos();
+GithubUserInfo.UserRepos('adibmehedi');
+//GithubUserInfo.UserInfo('Ashike12');
