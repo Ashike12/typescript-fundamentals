@@ -4,8 +4,9 @@ import { Agent } from "http";
 import { User } from './User'
 import { Repo } from './Repo'
 import * as _ from 'lodash'
+import { parse } from 'node-html-parser';
 
-
+const MAX = (1 << 20);
 const options: any = {
     headers: {
         'User-Agent': 'request'
