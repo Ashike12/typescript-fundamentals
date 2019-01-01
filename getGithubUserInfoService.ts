@@ -7,7 +7,7 @@ import * as _ from 'lodash'
 import { parse } from 'node-html-parser';
 
 const MAX = (1 << 20);
-const options: any = {
+const OPTIONS: any = {
     headers: {
         'User-Agent': 'request'
     },
@@ -15,25 +15,24 @@ const options: any = {
 }
 
 class GetGithubUserInfos {
-    UserInfo(UserName: string) {
+    UserInfo(UserName: string, cb: (user: User) => any) {
         let requestURL: any = 'https://api.github.com/users/' + UserName;
         console.log(requestURL);
-        request.get(requestURL, options, (error: any, response: any, body: any) => {
+        request.get(requestURL, OPTIONS, (error: any, response: any, body: any) => {
             let requestUserInfo: User = new User(body);
-            console.log(requestUserInfo);
+            //console.log(requestUserInfo);
+            cb(requestUserInfo);
         });
     }
 
-    UserRepos(UserName: string) {
+    UserRepos(UserName: string, cb: (repos:Repo[]) => any) {
         let requestURL: any = 'https://api.github.com/users/' + UserName + '/repos';
-        request.get(requestURL, options, (error: any, response: any, body: any) => {
-            let RequestUserRepos: Array<object> = new Array();
-            _.forEach(body, function (repo) {
-                let userRepo: Repo = new Repo(repo);
-                RequestUserRepos.push(userRepo);
-                console.log(userRepo);
-                console.log("\n\n---------------------------------------\n\n");
-            });
+        request.get(requestURL, OPTIONS, (error: any, response: any, body: any) => {
+            let RequestUserRepos = new Array();
+            _.forEach(body, function(repo){
+                RequestUserRepos.push(new Repo(repo));
+            })
+            cb(RequestUserRepos);
         });
     }
 }
